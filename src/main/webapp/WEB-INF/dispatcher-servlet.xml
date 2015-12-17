@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+
+<context:component-scan base-package="controller"></context:component-scan>
+
+<bean name="/hello.do" class="controller.HelloController"></bean><!--인스턴스 생성, 웹프로젝트에서는 name은 요청할때 요청 이름, id는 bean을 구분할때 사용  -->
+																 <!-- 응용프로젝트에서는 id나 name이나 구분하는 역할 동일함 -->
+																 
+																 
+<bean name="/abstControllerResult.do" class="controller.absController">
+	<property name="supportedMethods" value="GET,POST"></property><!-- supportedMethods메서드는 컨트롤러에게 GET방식으로 보낼지 POST방식으로 보낼지 설정해주는 메소드같다.(확실하진 않음..) -->
+</bean>
+
+<!--<bean class="controller.AnnoController"/> --><!-- 스프링안에 클래스생성시 무조건 인스턴스 생성해야한다, name을 사용하지 않을경우 이렇게 component를 이용해 생략이 가능하다. -->
+<bean name="/abstControllerResult2.do" class="controller.AbsController2">
+</bean>
+																 
+</beans>
